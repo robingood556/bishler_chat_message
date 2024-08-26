@@ -1,34 +1,46 @@
-/* Стилизация сообщений и имен пользователей */
+/* Общие стили */
+.message-box {
+    height: calc(100vh - 60px); /* Высота контейнера сообщений */
+    overflow-y: auto; /* Прокрутка по вертикали */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #f5f5f5; /* Светло-серый фон для контейнера сообщений */
+}
+
+/* Стиль сообщений */
 .message {
     display: flex;
     flex-direction: column; /* Располагаем элементы по вертикали */
     align-items: flex-start; /* Выравнивание по левому краю */
-    border-left: 4px solid; /* Цвет обрамления сообщения */
-    padding: 10px;
+    border-radius: 10px; /* Округлые углы */
+    padding: 15px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    background-color: #f1f1f1;
-    max-width: 70%; /* Ширина сообщения не больше 70% экрана */
+    max-width: 75%; /* Ширина сообщения не больше 75% экрана */
     word-wrap: break-word; /* Перенос слов, если они длинные */
     position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Легкая тень */
 }
 
 /* Имя пользователя над сообщением */
 .message .username {
-    font-size: 0.9em; /* Размер шрифта для имени пользователя */
+    font-size: 0.8em; /* Размер шрифта для имени пользователя */
     font-weight: bold; /* Жирный шрифт */
+    color: #666; /* Темно-серый цвет текста */
     margin-bottom: 5px; /* Отступ между именем и сообщением */
 }
 
 /* Стили для сообщений от текущего пользователя */
 .user1 {
-    border-left-color: #4CAF50; /* Цвет обрамления для сообщений текущего пользователя */
+    border-left: 4px solid #b0bec5; /* Пастельный серый цвет обрамления для сообщений текущего пользователя */
+    background: #e0f7fa; /* Светло-бирюзовый фон для сообщений текущего пользователя */
     align-self: flex-end; /* Сообщения текущего пользователя выравниваются вправо */
 }
 
 /* Стили для сообщений от других пользователей */
 .user2 {
-    border-left-color: #2196F3; /* Цвет обрамления для сообщений других пользователей */
+    border-left: 4px solid #b0bec5; /* Пастельный серый цвет обрамления для сообщений других пользователей */
+    background: #f0f4c3; /* Светло-желто-зеленый фон для сообщений других пользователей */
     align-self: flex-start; /* Сообщения других пользователей выравниваются влево */
 }
 
@@ -39,27 +51,34 @@
     width: 100%;
     background: #fff;
     padding: 10px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Легкая тень сверху */
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd; /* Линия сверху для разделения */
 }
 
 #message {
     width: calc(100% - 70px);
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-radius: 3px; /* Округлые углы для ввода сообщения */
+    font-size: 1em; /* Размер шрифта для ввода сообщения */
 }
 
 button {
     width: 60px;
     padding: 10px;
-    background: #4CAF50;
+    background: #b0bec5; /* Пастельный серый цвет для кнопки */
     border: none;
-    color: white;
+    color: #fff;
     cursor: pointer;
+    border-radius: 3px; /* Округлые углы для кнопки */
+    margin-left: 10px; /* Отступ слева */
+    font-size: 0.9em; /* Размер шрифта для кнопки */
 }
 
 button:hover {
-    background: #45a049;
+    background: #9e9e9e; /* Более темный серый цвет при наведении */
 }
 
 /* Стили для модального окна ввода имени */
@@ -70,26 +89,32 @@ button:hover {
     transform: translate(-50%, -50%);
     background: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Легкая тень для модального окна */
     z-index: 1000;
+    border-radius: 10px; /* Округлые углы */
+    width: 300px; /* Ширина модального окна */
 }
 
 .name-entry input {
     width: calc(100% - 70px);
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-radius: 3px; /* Округлые углы для ввода имени */
+    font-size: 1em; /* Размер шрифта для ввода имени */
 }
 
 .name-entry button {
     width: 60px;
     padding: 10px;
-    background: #4CAF50;
+    background: #b0bec5; /* Пастельный серый цвет для кнопки */
     border: none;
     color: white;
     cursor: pointer;
+    border-radius: 3px; /* Округлые углы для кнопки */
+    font-size: 0.9em; /* Размер шрифта для кнопки */
+    margin-top: 10px; /* Отступ сверху */
 }
 
 .name-entry button:hover {
-    background: #45a049;
+    background: #9e9e9e; /* Более темный серый цвет при наведении */
 }
