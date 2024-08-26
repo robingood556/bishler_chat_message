@@ -34,18 +34,30 @@ body {
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
     background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Отступ между сообщениями */
 }
 
 /* Сообщения */
 .message {
-    margin-bottom: 10px;
     padding: 10px;
+    border-left: 5px solid #007bff; /* Цвет и стиль обрамления */
     border-radius: 8px;
-    background: #c9c9c9; /* Цвет для сообщений */
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 80%; /* Ограничивает максимальную ширину сообщения */
+    word-wrap: break-word; /* Переносит слова в случае переполнения */
 }
 
+/* Стиль для сообщений с разными цветами */
 .message:nth-child(odd) {
-    background: #888888; /* Цвет для четных сообщений */
+    border-left-color: #000000; /* Цвет обрамления для четных сообщений */
+}
+
+.message:nth-child(even) {
+    border-left-color: #636363; /* Цвет обрамления для нечетных сообщений */
 }
 
 /* Секция ввода сообщений */

@@ -20,4 +20,12 @@ app.controller('mainController', function($scope) {
             $scope.message = ''; // Очищаем поле ввода после отправки
         }
     };
+
+    // Обработка нажатия клавиши
+    $scope.handleKeyPress = function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Предотвратить стандартное поведение Enter (например, перенос строки в текстовом поле)
+            $scope.send(); // Отправить сообщение
+        }
+    };
 });
