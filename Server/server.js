@@ -1,28 +1,34 @@
+// server.js
 const express = require('express');
 const path = require('path');
+const http = require('http');
+const socketIo = require('socket.io');
 const app = express();
 
-// Указываем Express на папку Client для обслуживания статических файлов
+// Путь к статическим файлам
 app.use(express.static(path.join(__dirname, '..', 'Client')));
 
-// Обслуживание index.html по корневому маршруту
+// Отдаём HTML файл
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', 'Client', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'Client', 'index.html'));
 });
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const server = http.createServer(app);
+const io = socketIo(server);
 
-io.on('connection', function(socket){
-  console.log('user connected');
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+io.on('connection', function(socket) {
+    console.log('user connected');
+
+    // Обработка сообщения от клиента
+    socket.on('chat message', function(msg) {
+        io.emit('chat message', msg); // Отправляем сообщение всем клиентам
+    });
+
+    socket.on('disconnect', function() {
+        console.log('user disconnected');
+    });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+server.listen(3000, function() {
+    console.log('listening on *:3000');
 });
