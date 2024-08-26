@@ -1,16 +1,18 @@
 const express = require('express');
 const path = require('path');
-const app = express();  // Сначала нужно инициализировать `app`
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const filePath = path.resolve(__dirname, '..', 'Client', 'index.html');
+const app = express();
 
-// Настройка маршрута для отправки HTML-файла
-app.get('/', function(req, res){
-  res.sendFile(filePath);
+// Указываем Express на папку Client для обслуживания статических файлов
+app.use(express.static(path.join(__dirname, '..', 'Client')));
+
+// Обслуживание index.html по корневому маршруту
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '..', 'Client', 'index.html'));
 });
 
-// Работа с WebSocket через Socket.io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('chat message', function(msg){
@@ -21,7 +23,6 @@ io.on('connection', function(socket){
   });
 });
 
-// Запуск сервера
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
