@@ -1,90 +1,95 @@
-/* Общие стили */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Основной контейнер чата */
-.chat-container {
-    width: 400px;
-    max-width: 100%;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-}
-
-/* Секция сообщений */
-.message-box {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
-    background: #fafafa;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Отступ между сообщениями */
-}
-
-/* Сообщения */
+/* Стилизация сообщений и имен пользователей */
 .message {
-    padding: 10px;
-    border-left: 5px solid #007bff; /* Цвет и стиль обрамления */
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    max-width: 80%; /* Ограничивает максимальную ширину сообщения */
-    word-wrap: break-word; /* Переносит слова в случае переполнения */
-}
-
-/* Стиль для сообщений с разными цветами */
-.message:nth-child(odd) {
-    border-left-color: #000000; /* Цвет обрамления для четных сообщений */
-}
-
-.message:nth-child(even) {
-    border-left-color: #636363; /* Цвет обрамления для нечетных сообщений */
-}
-
-/* Секция ввода сообщений */
-.input-box {
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background: #fff;
     display: flex;
-}
-
-.input-box input {
-    flex: 1;
+    flex-direction: column; /* Располагаем элементы по вертикали */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    border-left: 4px solid; /* Цвет обрамления сообщения */
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    max-width: 70%; /* Ширина сообщения не больше 70% экрана */
+    word-wrap: break-word; /* Перенос слов, если они длинные */
+    position: relative;
 }
 
-.input-box button {
-    padding: 10px 15px;
+/* Имя пользователя над сообщением */
+.message .username {
+    font-size: 0.9em; /* Размер шрифта для имени пользователя */
+    font-weight: bold; /* Жирный шрифт */
+    margin-bottom: 5px; /* Отступ между именем и сообщением */
+}
+
+/* Стили для сообщений от текущего пользователя */
+.user1 {
+    border-left-color: #4CAF50; /* Цвет обрамления для сообщений текущего пользователя */
+    align-self: flex-end; /* Сообщения текущего пользователя выравниваются вправо */
+}
+
+/* Стили для сообщений от других пользователей */
+.user2 {
+    border-left-color: #2196F3; /* Цвет обрамления для сообщений других пользователей */
+    align-self: flex-start; /* Сообщения других пользователей выравниваются влево */
+}
+
+/* Входное поле и кнопка отправки */
+.input-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+#message {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 60px;
+    padding: 10px;
+    background: #4CAF50;
     border: none;
-    background-color: #007bff;
     color: white;
-    border-radius: 4px;
     cursor: pointer;
 }
 
-.input-box button:hover {
-    background-color: #0056b3;
+button:hover {
+    background: #45a049;
+}
+
+/* Стили для модального окна ввода имени */
+.name-entry {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.name-entry input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.name-entry button {
+    width: 60px;
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.name-entry button:hover {
+    background: #45a049;
 }
